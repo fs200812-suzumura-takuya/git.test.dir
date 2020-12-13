@@ -1,0 +1,10 @@
+#!/bin/bash
+
+while read local_ref local_sha1 remote_ref remote_sha1
+do
+  if [[ "${remote_ref##refs/heads/}" = "main" ]]; then
+    echo 'main branch への push は禁止です. Do not push to main branch!!!' 
+    echo 'pull request ベースの開発フローを厳守してください.'
+    exit 1
+  fi
+done
